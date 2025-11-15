@@ -597,22 +597,7 @@ void updateLCD()
 
 void printStatus()
 {
-  Serial.println("\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
-  Serial.println("📊 TRẠNG THÁI HỆ THỐNG");
-  Serial.println("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
-  Serial.printf("💧 Độ ẩm đất:      %d%%\n", sensorData.soilMoisture);
-  Serial.printf("🌡️  Nhiệt độ:       %.1f°C\n", sensorData.temperature);
-  Serial.printf("💦 Độ ẩm không khí: %.1f%%\n", sensorData.humidity);
-  Serial.printf("⚙️  Trạng thái bơm: %s\n", pumpState ? "🟢 BẬT" : "🔴 TẮT");
-  Serial.printf("🎮 Chế độ:         %s\n", manualMode ? "THỦ CÔNG" : "TỰ ĐỘNG");
-  Serial.printf("🔴 Ngưỡng khô:     %d%%\n", soilDryThreshold);
-  Serial.printf("🟢 Ngưỡng ẩm:      %d%%\n", soilWetThreshold);
-  Serial.printf("📡 WiFi:           %s\n", WiFi.status() == WL_CONNECTED ? "✅ Kết nối" : "❌ Mất kết nối");
-  Serial.printf("⏱️  Uptime:         %luh %lum %lus\n",
-                sensorData.uptime / 3600,
-                (sensorData.uptime % 3600) / 60,
-                sensorData.uptime % 60);
-  Serial.println("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n");
+  Serial.println("📊 TRẠNG THÁI HỆ THỐNG xem trên telegram hoặc web");
 }
 
 // ==================== SETUP ====================
@@ -621,14 +606,6 @@ void setup()
 {
   Serial.begin(115200);
   delay(1000);
-
-  Serial.println("\n\n");
-  Serial.println("╔════════════════════════════════════╗");
-  Serial.println("║   🌱 SMART IRRIGATION SYSTEM 🌱   ║");
-  Serial.println("║   ESP32 + ThingSpeak + Telegram   ║");
-  Serial.println("╚════════════════════════════════════╝");
-  Serial.println();
-
   pinMode(RELAY_PIN, OUTPUT);
   pinMode(LED_WARNING, OUTPUT);
   pinMode(LED_OK, OUTPUT);
