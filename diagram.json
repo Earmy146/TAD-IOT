@@ -1,0 +1,94 @@
+{
+  "version": 1,
+  "author": "Smart Irrigation System",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": 14.3, "left": 52.6, "attrs": {} },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd",
+      "top": -137.6,
+      "left": 216.8,
+      "attrs": { "pins": "i2c" }
+    },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht",
+      "top": 96.3,
+      "left": 273,
+      "attrs": { "temperature": "28", "humidity": "65" }
+    },
+    { "type": "wokwi-relay-module", "id": "relay", "top": 307.4, "left": 124.8, "attrs": {} },
+    {
+      "type": "wokwi-potentiometer",
+      "id": "pot1",
+      "top": 38.2,
+      "left": -199.5,
+      "rotate": 90,
+      "attrs": { "value": "50000" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": -186,
+      "left": -5.8,
+      "attrs": { "color": "red", "label": "Khô" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": -120,
+      "left": -125.35,
+      "rotate": 90,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led2",
+      "top": -80.4,
+      "left": 42.2,
+      "attrs": { "color": "green", "label": "Ẩm" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": -43.2,
+      "left": -86.95,
+      "rotate": 90,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": 271.2,
+      "left": -84.6,
+      "attrs": { "volume": "0.1" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "lcd:GND", "esp:GND.1", "black", [ "h0" ] ],
+    [ "lcd:VCC", "esp:3V3", "red", [ "h0" ] ],
+    [ "lcd:SDA", "esp:D21", "green", [ "h0" ] ],
+    [ "lcd:SCL", "esp:D22", "yellow", [ "h0" ] ],
+    [ "dht:VCC", "esp:3V3", "red", [ "h0" ] ],
+    [ "dht:GND", "esp:GND.1", "black", [ "h0" ] ],
+    [ "dht:SDA", "esp:D15", "green", [ "h0" ] ],
+    [ "relay:VCC", "esp:VIN", "red", [ "h0" ] ],
+    [ "relay:GND", "esp:GND.2", "black", [ "h0" ] ],
+    [ "relay:IN", "esp:D4", "orange", [ "h0" ] ],
+    [ "pot1:GND", "esp:GND.1", "black", [ "v0" ] ],
+    [ "pot1:VCC", "esp:3V3", "red", [ "v0" ] ],
+    [ "pot1:SIG", "esp:D34", "blue", [ "v0" ] ],
+    [ "led1:A", "r1:1", "red", [ "v0" ] ],
+    [ "r1:2", "esp:D2", "red", [ "v0" ] ],
+    [ "led1:C", "esp:GND.1", "black", [ "v0" ] ],
+    [ "led2:A", "r2:1", "green", [ "v0" ] ],
+    [ "r2:2", "esp:D5", "green", [ "v0" ] ],
+    [ "led2:C", "esp:GND.1", "black", [ "v0" ] ],
+    [ "bz1:1", "esp:D18", "purple", [ "v0" ] ],
+    [ "bz1:2", "esp:GND.1", "black", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}

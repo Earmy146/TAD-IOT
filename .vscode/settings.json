@@ -1,0 +1,18 @@
+{
+  "files.associations": {
+    "*.ino": "cpp",
+    "*.h": "cpp"
+  },
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "C_Cpp.errorSquiggles": "enabled",
+  "platformio-ide.useBuiltinPIOCore": true,
+  "platformio-ide.autoRebuildAutocompleteIndex": true,
+  "files.exclude": {
+    "**/.git": true,
+    "**/.pio": true,
+    "**/node_modules": true
+  },
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 1000
+}
